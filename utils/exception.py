@@ -13,6 +13,7 @@ DEBUG_MODE=True
 
 async def http_exception_handler(request:Request,exc:HTTPException):
     """处理HTTPException异常"""
+    logger.error("http报错：", exc_info=exc)
     return JSONResponse(status_code=exc.status_code,
                         content={
                             "code": exc.status_code,
@@ -23,6 +24,7 @@ async def http_exception_handler(request:Request,exc:HTTPException):
 
 async def integrity_error_handler(request:Request,exc:IntegrityError):
     """处理数据库完整性约束错误"""
+    logger.error("数据库报错：", exc_info=exc)
     error_message=str(exc.orig)
 
     #判断具体的约束错误类型
@@ -52,6 +54,7 @@ async def integrity_error_handler(request:Request,exc:IntegrityError):
 
 async def sqlalchemy_exception_handler(request:Request,exc:SQLAlchemyError):
     """处理SQLAlchemy报错"""
+    logger.error("sql报错：", exc_info=exc)
     error_data=None
     if DEBUG_MODE:
         error_data={
