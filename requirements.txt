@@ -1,0 +1,22 @@
+# Python 3.9+
+# 依赖版本按代码实际使用的 API 给出下限，安装时可按本机环境调整
+
+# Web 框架与 ASGI 服务器
+fastapi>=0.110.0
+uvicorn>=0.27.0
+
+# 数据验证与序列化（Pydantic v2）
+pydantic>=2.0.0
+
+# ORM（异步）
+sqlalchemy>=2.0.0
+
+# MySQL 异步驱动
+aiomysql>=0.2.0
+
+# Redis 缓存
+redis>=5.0.0
+
+# 密码加密
+passlib>=1.7.4
+bcrypt>=4.0.0
